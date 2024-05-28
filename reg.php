@@ -18,24 +18,24 @@
         <h2>Registration!</h2>
         <p>Enter your details here and create new account.</p>
 
-        <form>
+        <form method="post" action="/lib/reg.php">
             <div class="inline">
                 <div>
                     <label>Your login</label>
-                    <input type="text">
+                    <input name="login" type="text">
                 </div>
                 <div>
                     <label>Name</label>
-                    <input type="text">
+                    <input name="username" type="text">
                 </div>
             </div>
             <label>Email Address</label>
-            <input type="email" class="one-line">
+            <input name="email" type="email" class="one-line">
 
             <label>Password</label>
-            <input type="password" class="one-line">
+            <input name="password" type="password" class="one-line">
 
-            <button type="button">Create new account</button>
+            <button type="submit">Create new account</button>
         </form>
     </div>
 </div>
