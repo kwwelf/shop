@@ -26,7 +26,7 @@ $password = md5($salt . $password);
 
 
 //Db
-$pdo = new PDO('pgsql:host=localhost;dbname=registration;port=5432','pgsql', '');
+require "db.php";
 
 //insert
 $sql = 'INSERT INTO users(login, username, email, password) VALUES(?,?,?,?)';
