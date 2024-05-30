@@ -27,10 +27,11 @@ $password = md5($salt . $password);
 
 //Db
 require "db.php";
+session_start();
 
 //insert
-$sql = 'INSERT INTO users(login, username, email, password) VALUES(?,?,?,?)';
-$query = $pdo -> prepare($sql);
-$query->execute([$login, $username,$email,$password]);
+//$sql = 'INSERT INTO users(login, username, email, password) VALUES(?,?,?,?)';
+//$query = $pdo -> prepare($sql);
+//$query->execute([$login, $username,$email,$password]);
 
 header('location: /');

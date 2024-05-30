@@ -26,26 +26,26 @@
     </div>
 
     <div class="container trending">
-        <a href="#" class="see-all">SEE ALL</a>
+        <a href="/trending.php" class="see-all">SEE ALL</a>
         <h3>Currently Trending Games</h3>
 
         <div class="games">
+            <?php
+            //db
+                require_once "lib/db.php";
+                //sql
+            $sql = 'SELECT * FROM trending ORDER BY id  DESC LIMIT 4';
+            $query = $pdo->prepare($sql);
+            $query ->execute();
+            $games = $query-> fetchAll(PDO::FETCH_OBJ);
+            foreach ($games as $el)
+                echo '
             <div class="block">
-                <img src="assets/img/game1.png" alt="">
-                <span><img src="assets/img/fire.svg" alt=""> 40 Followers</span>
-            </div>
-            <div class="block">
-                <img src="assets/img/game2.png" alt="">
-                <span><img src="assets/img/fire.svg" alt=""> 40 Followers</span>
-            </div>
-            <div class="block">
-                <img src="assets/img/game3.png" alt="">
-                <span><img src="assets/img/fire.svg" alt=""> 40 Followers</span>
-            </div>
-            <div class="block">
-                <img src="assets/img/game4.png" alt="">
-                <span><img src="assets/img/fire.svg" alt=""> 40 Followers</span>
-            </div>
+                <img src="assets/img/ '.$el->image.' " alt="">
+                <span><img src="assets/img/fire.svg" alt="">'.$el -> followers.' 40 Followers</span>
+                    </div>';
+            ?>
+
         </div>
     </div>
 
