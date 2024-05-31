@@ -1,4 +1,6 @@
 <?php
+session_start();
+!empty($_SESSION['user']) ? header('location: /auth.php') : null;
 ?>
 <!DOCTYPE html>
 <html lang="en">
