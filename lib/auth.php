@@ -3,8 +3,8 @@
 // DB
 require "db.php";
 session_start();
-    $login = trim(filter_var($_POST['login'], FILTER_SANITIZE_SPECIAL_CHARS));
-    $password = trim(filter_var($_POST['password'], FILTER_SANITIZE_SPECIAL_CHARS));
+$login = trim(filter_var($_POST['login'], FILTER_SANITIZE_SPECIAL_CHARS));
+$password = trim(filter_var($_POST['password'], FILTER_SANITIZE_SPECIAL_CHARS));
 
 //if (strlen($login) < 4) {
 //    echo "Login error! You must write more than 4 characters.";
@@ -20,6 +20,7 @@ if (!empty($login)) { // Проверка логина на пустоту
         if (!empty($password)) {
             if (password_verify($password, $user[0]['password'])) {
                 $_SESSION['user']['id'] = $user[0]['id'];
+                $_SESSION['user']['username'] = $user[0]['username'];
                 header('location: ../');
             } else {
                 $_SESSION['error'] = 'Неверный пароль!';
@@ -57,6 +58,7 @@ else {
     setcookie('login', $login, time() + 3600 * 24 * 30,"/");
     header('Location: /user.php');
 }
+
 
 
 

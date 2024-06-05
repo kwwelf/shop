@@ -1,7 +1,7 @@
 <?php
 const DB_PROVIDER = 'pgsql';
 const DB_HOST = 'localhost';
-const DB_BASENAME = 'Shop';
+const DB_BASENAME = 'reg';
 const DB_USERNAME = 'postgres';
 const DB_PASSWORD = '';
 

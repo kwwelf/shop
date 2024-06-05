@@ -16,14 +16,14 @@
 <div class="feedback">
     <div class="container">
         <h2>User's account</h2>
-        <p> Hi : <b> <?= $_COOKIE['login']; ?></b>. </p>
+        <p> Hi : <b> <?= $_SESSION['user']['username']; ?></b>. </p>
 
         <form method="post" action="/lib/add-game.php">
-            <label>Image</label>
-            <input type="text" class="one-line" name="followers">
+            <label>Name</label>
+            <input type="text" class="one-line" name="name">
 
             <label>Followers</label>
-            <input name="password" type="password" class="one-line">
+            <input name="followers" type="text" class="one-line">
 
             <button type="submit">Add something </button>
         </form>

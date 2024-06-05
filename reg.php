@@ -1,4 +1,5 @@
 <?php
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,6 +38,7 @@
 
             <button type="submit">Create new account</button>
         </form>
+        <span><?= $_SESSION['error']?></span>
     </div>
 </div>
 

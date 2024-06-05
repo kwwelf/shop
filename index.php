@@ -1,4 +1,8 @@
 <?php
+//session_start();
+//unset($_SESSION);
+//var_dump($_SESSION['user']);
+require_once "lib/db.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +16,7 @@
 
 <body>
 <div class="wrapper">
-<?php require_once "blocks/header.php"; ?>
+    <?php require_once "blocks/header.php"; ?>
 
     <div class="hero container">
         <div class="hero--info">
@@ -31,13 +35,7 @@
 
         <div class="games">
             <?php
-            //db
-                require_once "lib/db.php";
-                //sql
-            $sql = 'SELECT * FROM trending ORDER BY id  DESC LIMIT 4';
-            $query = $pdo->prepare($sql);
-            $query ->execute();
-            $games = $query-> fetchAll(PDO::FETCH_OBJ);
+            $games = select('SELECT * FROM games ORDER BY id  DESC LIMIT 4');
             foreach ($games as $el)
                 echo '
             <div class="block">

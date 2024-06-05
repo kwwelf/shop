@@ -1,6 +1,7 @@
 <?php
+require_once "lib/db.php";
 session_start();
-!empty($_SESSION['user']) ? header('location: /auth.php') : null;
+empty($_SESSION['user']) ? header('location: /auth.php') : null;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,19 +22,15 @@ session_start();
 
         <div class="games">
             <?php
-            //db
-            require_once "lib/db.php";
-            //sql
-            $sql = 'SELECT * FROM trending ORDER BY id  DESC';
-            $query = $pdo->prepare($sql);
-            $query ->execute();
-            $games = $query-> fetchAll(PDO::FETCH_OBJ);
-            foreach ($games as $el)
+            $games = select('SELECT * FROM games ORDER BY id  DESC');
+            foreach ($games as $el) {
                 echo '
-            <div class="block">
-                <img src="assets/img/ '.$el->image.' " alt="">
-                <span><img src="assets/img/fire.svg" alt="">'.$el -> followers.' 40 Followers</span>
-                    </div>';
+                    <div class="block">
+                        <h3>' . $el['name'] . '</h3>
+                        <span><img src="assets/img/fire.svg" alt="">' . $el['followers'] . '</span>
+                    </div>
+                    ';
+            }
             ?>
         </div>
     </div>
